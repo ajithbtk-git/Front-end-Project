@@ -155,15 +155,13 @@ function showDropdown() {
     elements.forEach(element => {
         
         element.style.display = 'block';
-        element.style.left = '50px'; // Adjust left position as needed
+        element.style.left = '50px'; //  left   needed
     });
 }
 
 function hideDropdown() {
-    // Select all elements with IDs starting with 'submenu-'
     const elements = document.querySelectorAll('[id^="submenu-"]');
-    
-    // Loop through each element and hide its dropdown menu
+
     elements.forEach(element => {
         element.style.display = 'none';
     });
@@ -182,7 +180,7 @@ let brightnessLevel = 100;
 
 function increaseBrightness(imgid) {
     brightnessLevel += 10;
-    if (brightnessLevel > 200) { // Limit brightness to 200% (maximum)
+    if (brightnessLevel > 200) { 
         brightnessLevel = 200;
     }
     document.getElementById(imgid).style.filter = `brightness(${brightnessLevel}%)`;
@@ -215,8 +213,35 @@ function createAvatar(imageElement, myCanvas) {
     context.arc(avatarSize / 2, avatarSize / 2, avatarSize / 2, 0, 2 * Math.PI);
     context.clip();
   
-    // Draw the original image onto the canvas with scaling and clipping
     context.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight, 0, 0, avatarSize, avatarSize);
 
     document.getElementById(myCanvas).appendChild(canvas);
-  }
+}
+
+
+function toGrayScale(imageElement) {
+    var image = document.getElementById(imageElement);
+    var canvas = document.createElement('canvas');
+    canvas.width = image.width;
+    canvas.height = image.height;
+    var context = canvas.getContext('2d');
+    context.drawImage(image, 0, 0);
+
+    var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    var data = imageData.data;
+
+    for (var i = 0; i < data.length; i += 4) {
+        var r = data[i];
+        var g = data[i + 1];
+        var b = data[i + 2];
+        var grayscale = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+        data[i] = grayscale; 
+        data[i + 1] = grayscale;
+        data[i + 2] = grayscale;
+    }
+
+    context.putImageData(imageData, 0, 0);
+
+    image.src = canvas.toDataURL();
+}
