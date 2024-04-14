@@ -188,15 +188,27 @@ function increaseBrightness(imgid) {
     document.getElementById(imgid).style.filter = `brightness(${brightnessLevel}%)`;
 }
 
-function reduceResolution(imgid){
+function reduceResolution(imageElement) {
+    // Check if the provided element is an HTMLImageElement
+
+    var img = document.getElementById(imageElement);
+    if (!(img instanceof HTMLImageElement)) {
+        console.error('Error: The provided element is not an HTMLImageElement.');
+        return;
+    }
+
+    // Create a canvas element
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
-
     const scaleFactor = 0.5;
-    canvas.height = imgid.height * scaleFactor;
-    canvas.width = imgid.width * scaleFactor;
 
-    context.drawImage(imgid, 0, 0, canvas.width, canvas.height)
+    // Set canvas dimensions based on scaleFactor
+    canvas.width = img.width * scaleFactor;
+    canvas.height = img.height * scaleFactor;
 
-    imgid.src = canvas.toDataURL('image/jpeg', 0.7);
+    // Draw the image onto the canvas
+    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+    img.crossOrigin = "anonymous";
+    // Update the src of the original imageElement with the canvas data URL
+    imageElement.src = canvas.toDataURL();
 }
