@@ -189,26 +189,16 @@ function increaseBrightness(imgid) {
 }
 
 function reduceResolution(imageElement) {
-    // Check if the provided element is an HTMLImageElement
 
     var img = document.getElementById(imageElement);
-    if (!(img instanceof HTMLImageElement)) {
-        console.error('Error: The provided element is not an HTMLImageElement.');
-        return;
-    }
-
-    // Create a canvas element
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
     const scaleFactor = 0.5;
 
-    // Set canvas dimensions based on scaleFactor
     canvas.width = img.width * scaleFactor;
     canvas.height = img.height * scaleFactor;
 
-    // Draw the image onto the canvas
     context.drawImage(img, 0, 0, canvas.width, canvas.height);
     img.crossOrigin = "anonymous";
-    // Update the src of the original imageElement with the canvas data URL
-    imageElement.src = canvas.toDataURL();
+    imageElement.src = canvas.toDataURL('image/jpeg', 0.7);
 }
