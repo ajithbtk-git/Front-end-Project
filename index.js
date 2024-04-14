@@ -11,10 +11,6 @@ function duplicateImage(id) {
 
 function averageColor(imageElement, parentElement) {
  
-    if (!imageElement || !parentElement) {
-        console.error('Invalid parameters for averageColor function.');
-        return;
-    }
     // Create the canvas element
     var canvas
         = document.createElement('canvas'),
@@ -108,7 +104,6 @@ function averageColor(imageElement, parentElement) {
     const node = document.createTextNode("The image is "+ result+"ish");
     para.appendChild(node);
 
-    const element = document.getElementById(parentElement);
-    element.appendChild(para);
+    parentElement.appendChild(para);
 }
 
