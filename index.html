@@ -34,7 +34,7 @@
 <body>
 
 <div class="container mt-5">
-  <div class="row">
+  <div class="row" id="row">
     <div class="col-md-4 mb-4">
       <div class="image-container">
         <img src="img1.jpg" alt="Image 1">
@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 mb-4">
+    <div class="col-md-4 mb-4" id="img2">
       <div class="image-container">
         <img src="img2.jpg" alt="Image 2">
         <div class="dropdown-badge">
@@ -139,6 +139,7 @@
       </div>
     <!-- Add more image containers here -->
   </div>
+  <button onclick="duplicateImage()">duplicate</button>
 </div>
 
 <!-- Bootstrap JS and jQuery -->
