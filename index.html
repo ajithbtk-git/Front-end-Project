@@ -61,7 +61,6 @@
                 </li>
               </ul>
               <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col1'))">Duplicate</a>
-              
             </div>
           </div>
         </div>
@@ -77,8 +76,19 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
               <a class="dropdown-item" onclick="averageColor(document.getElementById('img2'), document.getElementById('col2'))">Check RGB</a>
+              <a class="dropdown-item" id="changeColor" onmouseover="showDropdown()"on>Change Color</a>
+              <ul class="dropdown-menu dropdown-submenu" id="submenu" onmouseleave="hideDropdown()">
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img2'), 'red')">To Red</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img2'), 'green')">To Green</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img2'), 'blue')">To Blue</a>
+                </li>
+              </ul>
               <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col2'))">Duplicate</a>
-              <a class="dropdown-item" href="#">Option 3</a>
             </div>
           </div>
         </div>
@@ -94,8 +104,19 @@
                 </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                 <a class="dropdown-item" onclick="averageColor(document.getElementById('img3'), document.getElementById('col3'))">Check RGB</a>
-                <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col3'))">Duplicate</a>
-                <a class="dropdown-item" href="#">Option 3</a>
+                <a class="dropdown-item" id="changeColor" onmouseover="showDropdown()"on>Change Color</a>
+              <ul class="dropdown-menu dropdown-submenu" id="submenu" onmouseleave="hideDropdown()">
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img3'), 'red')">To Red</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img3'), 'green')">To Green</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img3'), 'blue')">To Blue</a>
+                </li>
+              </ul>
+              <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col3'))">Duplicate</a>
               </div>
             </div>
           </div>
@@ -111,8 +132,19 @@
                 </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                 <a class="dropdown-item" onclick="averageColor(document.getElementById('img4'), document.getElementById('col4'))">Check RGB</a>
-                <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col4'))">Duplicate</a>
-                <a class="dropdown-item" href="#">Option 3</a>
+                <a class="dropdown-item" id="changeColor" onmouseover="showDropdown()"on>Change Color</a>
+              <ul class="dropdown-menu dropdown-submenu" id="submenu" onmouseleave="hideDropdown()">
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img4'), 'red')">To Red</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img4'), 'green')">To Green</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img4'), 'blue')">To Blue</a>
+                </li>
+              </ul>
+              <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col4'))">Duplicate</a>
               </div>
             </div>
           </div>
@@ -128,8 +160,19 @@
                 </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                 <a class="dropdown-item" onclick="averageColor(document.getElementById('img5'), document.getElementById('col5'))">Check RGB</a>
-                <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col5'))">Duplicate</a>
-                <a class="dropdown-item" href="#">Option 3</a>
+                <a class="dropdown-item" id="changeColor" onmouseover="showDropdown()"on>Change Color</a>
+              <ul class="dropdown-menu dropdown-submenu" id="submenu" onmouseleave="hideDropdown()">
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img5'), 'red')">To Red</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img5'), 'green')">To Green</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img5'), 'blue')">To Blue</a>
+                </li>
+              </ul>
+              <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col5'))">Duplicate</a>
               </div>
             </div>
           </div>
@@ -145,8 +188,19 @@
                 </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                 <a class="dropdown-item" onclick="averageColor(document.getElementById('img6'), document.getElementById('col6'))">Check RGB</a>
-                <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col6'))">Duplicate</a>
-                <a class="dropdown-item" href="#">Option 3</a>
+                <a class="dropdown-item" id="changeColor" onmouseover="showDropdown()"on>Change Color</a>
+              <ul class="dropdown-menu dropdown-submenu" id="submenu" onmouseleave="hideDropdown()">
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img6'), 'red')">To Red</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img6'), 'green')">To Green</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" onclick="changeColor(document.getElementById('img6'), 'blue')">To Blue</a>
+                </li>
+              </ul>
+              <a class="dropdown-item" onclick="duplicateImage(document.getElementById('col6'))">Duplicate</a>
               </div>
             </div>
           </div>
