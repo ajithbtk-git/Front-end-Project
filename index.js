@@ -149,13 +149,31 @@ function changeColor(imageElement, toColor) {
     imageElement.src = canvas.toDataURL();
 }
 
-function showDropdown(){
-    elem = document.getElementById('submenu');
-    elem.style.display = 'block';
-    elem.style.left = '50';
+function showDropdown() {
+
+    const elements = document.querySelectorAll('[id^="submenu-"]');
+    
+    elements.forEach(element => {
+        
+        element.style.display = 'block';
+        element.style.left = '50px'; // Adjust left position as needed
+    });
 }
 
-function hideDropdown(){
-    elem = document.getElementById('submenu');
-    elem.style.display = 'none';
+function hideDropdown() {
+    // Select all elements with IDs starting with 'submenu-'
+    const elements = document.querySelectorAll('[id^="submenu-"]');
+    
+    // Loop through each element and hide its dropdown menu
+    elements.forEach(element => {
+        element.style.display = 'none';
+    });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('[id^="submenu-"]');
+    elements.forEach(element => {
+        element.addEventListener('mouseenter', showDropdown);
+        element.addEventListener('mouseleave', hideDropdown);
+    });
+});
