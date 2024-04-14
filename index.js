@@ -112,38 +112,16 @@ function averageColor(imageElement, parentElement) {
 function changeColor(imageElement, toColor) {
  
     // Create the canvas element
-    var canvas
-        = document.createElement('canvas'),
+    var canvas = document.createElement('canvas');
+    var context = canvas.getContext('2d');
 
-        // Get the 2D context of the canvas
-        context
-            = canvas.getContext &&
-            canvas.getContext('2d'),
-        imgData, width, height,
-        length,
+    height = canvas.height = imageElement.naturalHeight || imageElement.offsetHeight || imageElement.height;
+    width = canvas.width = imageElement.naturalWidth || imageElement.offsetWidth || imageElement.width;
 
-        // Define variables for storing
-        // the individual red, blue and
-        // green colors
-        rgb = { r: 0, g: 0, b: 0 },
-
-        // Define variable for the 
-        // total number of colors
-        count = 0;
-
-    // Set the height and width equal
-    // to that of the canvas and the image
-    height = canvas.height =
-        imageElement.naturalHeight ||
-        imageElement.offsetHeight ||
-        imageElement.height;
-    width = canvas.width =
-        imageElement.naturalWidth ||
-        imageElement.offsetWidth ||
-        imageElement.width;
 
     // Draw the image to the canvas
     context.drawImage(imageElement, 0, 0);
+
     imageElement.crossOrigin = "anonymous";
     // Get the data of the image
     imgData = context.getImageData(
@@ -158,7 +136,7 @@ function changeColor(imageElement, toColor) {
 
     }
 
-    context.putImageData(imageElement, 0, 0);
+    context.putImageData(imgData, 0, 0);
 }
 
 function showDropdown(){
