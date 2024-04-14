@@ -177,6 +177,8 @@ function changeColor(imageElement, toColor) {
     else{
         rgb.b = 255;
     }
+
+    context.putImageData(imageElement, 0, 0);
 }
 
 function showDropdown(){
