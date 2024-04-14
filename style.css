@@ -2,6 +2,6 @@ a:hover{
     cursor: pointer;
 }
 
-.dropdown{
+#drop-menu{
     overflow: visible;
 }

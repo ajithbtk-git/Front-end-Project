@@ -1,3 +1,5 @@
+
+
 function duplicateImage(id) {
 
     const originalImage = id;
@@ -244,4 +246,38 @@ function toGrayScale(imageElement) {
     context.putImageData(imageData, 0, 0);
 
     image.src = canvas.toDataURL();
+}
+
+
+function generateQR(imageElement) {
+    const imageUrl = document.getElementById(imageElement);
+    const canvas = document.createElement('canvas');
+
+    if (!imageUrl) {
+        alert('Please enter an image URL');
+        return;
+    }
+
+    // Create QR code instance
+    const qr = QRCode(0, 'L'); // Error correction level: L (Low)
+    qr.addData(imageUrl);
+    qr.make();
+
+    // Render QR code on canvas
+    const ctx = canvas.getContext('2d');
+    const cellSize = canvas.width / qr.getModuleCount();
+
+    canvas.height = canvas.width; // Set canvas height same as width
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    qr.modules.forEach((row, rowIndex) => {
+        row.forEach((col, colIndex) => {
+            ctx.fillStyle = col ? 'black' : 'white';
+            const x = colIndex * cellSize;
+            const y = rowIndex * cellSize;
+            ctx.fillRect(x, y, cellSize, cellSize);
+        });
+    });
+
+    document.getElementById('row').appendChild(canvas);
 }
