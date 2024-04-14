@@ -193,14 +193,14 @@ function reduceResolution(imageElement) {
     var img = document.getElementById(imageElement);
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
-    const scaleFactor = 0.5;
+    const scaleFactor = 0.1;
 
     canvas.width = img.width * scaleFactor;
     canvas.height = img.height * scaleFactor;
 
     context.drawImage(img, 0, 0, canvas.width, canvas.height);
     img.crossOrigin = "anonymous";
-    const reducedImageDataURL = canvas.toDataURL();
+    const reducedImageDataURL = canvas.toDataURL('image/jpeg', 0.2);
     console.log('Reduced Image Data URL:', reducedImageDataURL);
     imageElement.src = reducedImageDataURL;
 }
