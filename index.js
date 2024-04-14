@@ -48,7 +48,7 @@ function averageColor(imageElement, parentElement) {
 
     // Draw the image to the canvas
     context.drawImage(imageElement, 0, 0);
-    imageElement.crossOrigin = "anonymous"
+    imageElement.crossOrigin = "anonymous";
     // Get the data of the image
     imgData = context.getImageData(
                 0, 0, width, height);
