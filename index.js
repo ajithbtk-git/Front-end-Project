@@ -111,6 +111,7 @@ function averageColor(imageElement, parentElement) {
 
 function changeColor(imageElement, toColor) {
  
+    var myImage = new Image();
     // Create the canvas element
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
@@ -137,6 +138,7 @@ function changeColor(imageElement, toColor) {
     }
 
     context.putImageData(imgData, 0, 0);
+    imageElement.src = canvas.toDataURL();
 }
 
 function showDropdown(){
