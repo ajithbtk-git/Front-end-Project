@@ -105,7 +105,7 @@ function averageColor(imageElement, parentElement) {
     }
     
     const para = document.createElement("p");
-    const node = document.createTextNode("The image is"+ result);
+    const node = document.createTextNode("The image is "+ result+"ish");
     para.appendChild(node);
 
     const element = document.getElementById(parentElement);
