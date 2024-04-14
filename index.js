@@ -177,3 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
         element.addEventListener('mouseleave', hideDropdown);
     });
 });
+
+
+let brightnessLevel = 100;
+
+function increaseBrightness(imgid) {
+    brightnessLevel += 10;
+    if (brightnessLevel > 200) { // Limit brightness to 200% (maximum)
+        brightnessLevel = 200;
+    }
+    document.getElementById(imgid).style.filter = `brightness(${brightnessLevel}%)`;
+}
