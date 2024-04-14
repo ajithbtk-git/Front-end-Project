@@ -203,3 +203,4 @@ function reduceResolution(imageElement) {
     const reducedImageDataURL = canvas.toDataURL('image/jpeg', 0.2);
     img.src = reducedImageDataURL;
 }
+
