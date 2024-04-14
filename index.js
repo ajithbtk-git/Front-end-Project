@@ -193,7 +193,7 @@ function reduceResolution(imageElement) {
     var img = document.getElementById(imageElement);
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
-    const scaleFactor = 0.1;
+    const scaleFactor = 0.9;
 
     canvas.width = img.width * scaleFactor;
     canvas.height = img.height * scaleFactor;
