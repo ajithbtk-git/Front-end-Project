@@ -100,7 +100,8 @@ function averageColor(imageElement, parentElement) {
         }
     }
     
-    const para = document.createElement("p");
+    const para = document.createElement("h4");
+    para.color = result;
     const node = document.createTextNode("The image is "+ result+"ish");
     para.appendChild(node);
 
