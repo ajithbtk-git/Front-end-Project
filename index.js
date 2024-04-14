@@ -206,7 +206,7 @@ function reduceResolution(imageElement) {
 
 function createAvatar(imageElement, myCanvas) {
     const image = document.getElementById(imageElement);
-    const canvas = document.getElementById(myCanvas);
+    const canvas = document.createElement('canvas');
     const context = canvas.getContext("2d");
   
     const avatarSize = Math.min(canvas.width, canvas.height);
@@ -218,4 +218,5 @@ function createAvatar(imageElement, myCanvas) {
     // Draw the original image onto the canvas with scaling and clipping
     context.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight, 0, 0, avatarSize, avatarSize);
 
+    document.getElementById(myCanvas).appendChild(canvas);
   }
