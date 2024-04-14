@@ -154,28 +154,16 @@ function changeColor(imageElement, toColor) {
 
     for (var i = 0; i < length; i += 4) {
 
-        // Sum all values of red colour
-        rgb.r += imgData.data[i];
+        if(toColor == 'red'){
+            imgData.data[i] = 255;
+        }
+        else if(toColor == 'green'){
+            imgData.data[i+1] = 255;
+        }
+        else{
+            imgData.data[i+2] = 255;
+        }
 
-        // Sum all values of green colour
-        rgb.g += imgData.data[i + 1];
-
-        // Sum all values of blue colour
-        rgb.b += imgData.data[i + 2];
-
-        // Increment the total number of
-        // values of rgb colours
-        count++;
-    }
-
-    if(toColor == 'red'){
-        rgb.r = 255;
-    }
-    else if(toColor == 'green'){
-        rgb.g = 255;
-    }
-    else{
-        rgb.b = 255;
     }
 
     context.putImageData(imageElement, 0, 0);
