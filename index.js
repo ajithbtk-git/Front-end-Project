@@ -153,16 +153,8 @@ function changeColor(imageElement, toColor) {
     length = imgData.data.length;
 
     for (var i = 0; i < length; i += 4) {
-
-        if(toColor == 'red'){
-            imgData.data[i] = 255;
-        }
-        else if(toColor == 'green'){
-            imgData.data[i+1] = 255;
-        }
-        else{
-            imgData.data[i+2] = 255;
-        }
+        imgData.data[i] = 255;
+        
 
     }
 
