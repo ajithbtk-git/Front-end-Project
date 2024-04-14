@@ -111,7 +111,6 @@ function averageColor(imageElement, parentElement) {
 
 function changeColor(imageElement, toColor) {
  
-    var myImage = new Image();
     // Create the canvas element
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
@@ -187,4 +186,17 @@ function increaseBrightness(imgid) {
         brightnessLevel = 200;
     }
     document.getElementById(imgid).style.filter = `brightness(${brightnessLevel}%)`;
+}
+
+function reduceResolution(imgid){
+    var canvas = document.createElement('canvas');
+    var context = canvas.getContext('2d');
+
+    const scaleFactor = 0.5;
+    canvas.height = imgid.height * scaleFactor;
+    canvas.width = imgid.width * scaleFactor;
+
+    context.drawImage(imgid, 0, 0, canvas.width, canvas.height)
+
+    imgid.src = canvas.toDataURL('image/jpeg', 0.7);
 }
