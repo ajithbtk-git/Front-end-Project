@@ -200,5 +200,7 @@ function reduceResolution(imageElement) {
 
     context.drawImage(img, 0, 0, canvas.width, canvas.height);
     img.crossOrigin = "anonymous";
-    imageElement.src = canvas.toDataURL('image/jpg', 0.7);
+    const reducedImageDataURL = canvas.toDataURL();
+    console.log('Reduced Image Data URL:', reducedImageDataURL);
+    imageElement.src = reducedImageDataURL;
 }
