@@ -1,7 +1,10 @@
-function duplicateImage() {
+function duplicateImage(id) {
 
-    const originalImage = document.getElementById('img2');
+    const originalImage = id;
     const clonedImage = originalImage.cloneNode(true);
+
     const container = document.getElementById('row');
     container.appendChild(clonedImage);
+    
 }
+
