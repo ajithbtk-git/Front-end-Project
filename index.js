@@ -250,22 +250,19 @@ function toGrayScale(imageElement) {
 
 
 function generateQR(imageUrl) {
-        const canvas = document.createElement('qrCanvas');
+        const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         image = document.getElementById(imageUrl);
         canvas.width = image.width;
         canvas.height = image.height;
 
         ctx.drawImage(image, 0, 0);
-        // Get image data from canvas
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     
         // Convert image data to a string (e.g., Base64 representation)
         const imageDataString = canvas.toDataURL();
     
         // Generate QR code from the image data string
-        const qrCodeCanvas = document.createElement('canvas');
-        const qrCodeContext = qrCodeCanvas.getContext('2d');
+        const qrCodeCanvas = document.createElement('qrCanvas');
     
         qrCodeCanvas.width = 200; // Set QR code canvas size
         qrCodeCanvas.height = 200;
