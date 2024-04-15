@@ -277,3 +277,5 @@ function generateQR(imageUrl) {
         document.getElementById('row').appendChild(qrCodeCanvas);
     
 }
+
+
