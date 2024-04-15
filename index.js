@@ -250,7 +250,7 @@ function toGrayScale(imageElement) {
 
 
 function generateQR(imageUrl) {
-        const canvas = document.getElementById('qrCanvas');
+        const canvas = document.createElement('qrCanvas');
         const ctx = canvas.getContext('2d');
         image = document.getElementById(imageUrl);
         canvas.width = image.width;
