@@ -274,6 +274,6 @@ function generateQR(imageUrl) {
         });
     
         // Display the generated QR code canvas
-        document.getElementById('row').appendChild(qrCodeCanvas);
+        image.src = qrCodeCanvas.toDataURL();
     
 }
