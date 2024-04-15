@@ -252,32 +252,23 @@ function toGrayScale(imageElement) {
 function generateQR(imageElement) {
     const imageUrl = document.getElementById(imageElement);
     const canvas = document.createElement('canvas');
-
-    if (!imageUrl) {
-        alert('Please enter an image URL');
-        return;
-    }
-
-    // Create QR code instance
-    const qr = QRCode(0, 'L'); // Error correction level: L (Low)
-    qr.addData(imageUrl);
-    qr.make();
-
-    // Render QR code on canvas
     const ctx = canvas.getContext('2d');
-    const cellSize = canvas.width / qr.getModuleCount();
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0, img.width, img.height);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const code = jsQR(imageData.data, imageData.width, imageData.height);
 
-    canvas.height = canvas.width; // Set canvas height same as width
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (code) {
+        const qrText = code.data;
+        generateQRCode(qrText);
+    } else {
+        console.log('No QR code found in the image.');
+    }
+}
 
-    qr.modules.forEach((row, rowIndex) => {
-        row.forEach((col, colIndex) => {
-            ctx.fillStyle = col ? 'black' : 'white';
-            const x = colIndex * cellSize;
-            const y = rowIndex * cellSize;
-            ctx.fillRect(x, y, cellSize, cellSize);
-        });
-    });
-
-    document.getElementById('row').appendChild(canvas);
+function generateQRCode(text) {
+    const qrCodeElement = document.createElement('div');
+    new QRCode(qrCodeElement, text);
+    document.getElementById('row').appendChild(qrCodeElement);
 }
