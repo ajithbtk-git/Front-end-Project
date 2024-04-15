@@ -262,7 +262,7 @@ function generateQR(imageUrl) {
         const imageDataString = canvas.toDataURL();
     
         // Generate QR code from the image data string
-        const qrCodeCanvas = document.createElement('qrCanvas');
+        const qrCodeCanvas = document.createElement('qrCodeCanvas');
     
         qrCodeCanvas.width = 200; // Set QR code canvas size
         qrCodeCanvas.height = 200;
