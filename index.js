@@ -249,26 +249,14 @@ function toGrayScale(imageElement) {
 }
 
 
-function generateQR(imageElement) {
-    const img = document.getElementById(imageElement);
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img, 0, 0, img.width, img.height);
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const code = jsQR(imageData.data, imageData.width, imageData.height);
-
-    if (code) {
-        const qrText = code.data;
-        generateQRCode(qrText);
-    } else {
-        console.log('No QR code found in the image.');
-    }
-}
-
-function generateQRCode(text) {
-    const qrCodeElement = document.createElement('div');
-    new QRCode(qrCodeElement, text);
-    document.getElementById('row').appendChild(qrCodeElement);
+function generateQR(imageUrl) {
+    const qrCodeCanvas = document.createElement('canvas');
+    QRCode.toCanvas(qrCodeCanvas, imageUrl, (error) => {
+        if (error) {
+            console.error('Error generating QR code:', error);
+        } else {
+            // Append the QR code canvas to the document
+            document.body.appendChild(qrCodeCanvas);
+        }
+    });
 }
