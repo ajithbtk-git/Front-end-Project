@@ -108,8 +108,6 @@ function averageColor(imageElement, parentElement) {
     para.appendChild(node);
 
     parentElement.appendChild(para);
-    
-    return result;
 }
 
 function changeColor(imageElement, toColor) {
@@ -263,6 +261,30 @@ function generateQR(imagePath, canvasId) {
     qrCode.append(canvas); 
 }
 
-function filterColor(color){
+function createThumbnail(image, col){
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
 
+    const maxThumbSize = 150;
+    let width = image.width;
+    let height = image.height;
+
+    if (width > height) {
+        if (width > maxThumbSize) {
+            height *= maxThumbSize / width;
+            width = maxThumbSize;
+        }
+    } else {
+        if (height > maxThumbSize) {
+            width *= maxThumbSize / height;
+            height = maxThumbSize;
+        }
+    }
+
+    canvas.width = width;
+    canvas.height = height;
+
+    ctx.drawImage(image, 0, 0, width, height);
+
+    document.getElementById(col).appendChild(canvas);
 }
