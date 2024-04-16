@@ -109,6 +109,7 @@ function averageColor(imageElement, parentElement) {
 
     parentElement.appendChild(para);
     
+    return result;
 }
 
 function changeColor(imageElement, toColor) {
@@ -260,4 +261,8 @@ function generateQR(imagePath, canvasId) {
     const canvas = document.getElementById(canvasId);
     canvas.innerHTML = ""; 
     qrCode.append(canvas); 
+}
+
+function filterColor(color){
+
 }
