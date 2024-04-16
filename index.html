@@ -44,6 +44,7 @@
     <div class="col-md-4 mb-4" id="col1">
       <div class="image-container"  id="drop-menu-1">
         <img src="img1.jpg" alt="Image 1" id="img1">
+        <div id="canvas1"></div>
         <div class="dropdown-badge">
           <div class="dropdown">
             <button class="btn dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -68,7 +69,7 @@
               <a class="dropdown-item" onclick="reduceResolution('img1')">Reduce Resolution</a>
               <a class="dropdown-item" onclick="createAvatar('img1', 'col1')">Create Avatar</a>
               <a class="dropdown-item" onclick="toGrayScale('img1')">Convert to Greyscale</a>
-              <a class="dropdown-item" onclick="generateQR('img1')">Generate QR</a>
+              <a class="dropdown-item" onclick="generateQR('img1', 'canvas1')">Generate QR</a>
             </div>
           </div>
         </div>
@@ -77,6 +78,7 @@
     <div class="col-md-4 mb-4" id="col2">
       <div class="image-container" id="drop-menu-2">
         <img src="img2.jpg" alt="Image 2" id="img2">
+        <div id="canvas2"></div>
         <div class="dropdown-badge">
           <div class="dropdown">
             <button class="btn dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,6 +103,7 @@
               <a class="dropdown-item" onclick="reduceResolution('img2')">Reduce Resolution</a>
               <a class="dropdown-item" onclick="createAvatar('img2', 'col2')">Create Avatar</a>
               <a class="dropdown-item" onclick="toGrayScale('img2')">Convert to Greyscale</a>
+              <a class="dropdown-item" onclick="generateQR('img2', 'canvas2')">Generate QR</a>
             </div>
           </div>
         </div>
@@ -109,6 +112,7 @@
     <div class="col-md-4 mb-4" id="col3">
         <div class="image-container" id="drop-menu-3">
           <img src="img3.jpeg" alt="Image 3" id="img3">
+          <div id="canvas3"></div>
           <div class="dropdown-badge">
             <div class="dropdown">
                 <button class="btn dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -133,6 +137,7 @@
               <a class="dropdown-item" onclick="reduceResolution('img3')">Reduce Resolution</a>
               <a class="dropdown-item" onclick="createAvatar('img3', 'col3')">Create Avatar</a>
               <a class="dropdown-item" onclick="toGrayScale('img3')">Convert to Greyscale</a>
+              <a class="dropdown-item" onclick="generateQR('img3', 'canvas3')">Generate QR</a>
               </div>
             </div>
           </div>
@@ -141,6 +146,7 @@
       <div class="col-md-4 mb-4" id="col4">
         <div class="image-container" id="drop-menu-4">
           <img src="img4.jpg" alt="Image 4" id="img4">
+          <div id="canvas4"></div>
           <div class="dropdown-badge">
             <div class="dropdown">
                 <button class="btn dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -165,6 +171,7 @@
               <a class="dropdown-item" onclick="reduceResolution('img4')">Reduce Resolution</a>
               <a class="dropdown-item" onclick="createAvatar('img4', 'col4')">Create Avatar</a>
               <a class="dropdown-item" onclick="toGrayScale('img4')">Convert to Greyscale</a>
+              <a class="dropdown-item" onclick="generateQR('img4', 'canvas4')">Generate QR</a>
               </div>
             </div>
           </div>
@@ -173,6 +180,7 @@
       <div class="col-md-4 mb-4" id="col5">
         <div class="image-container" id="drop-menu-5">
           <img src="img5.jpg" alt="Image 5" id="img5">
+          <div id="canvas5"></div>
           <div class="dropdown-badge">
             <div class="dropdown">
                 <button class="btn dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -197,6 +205,7 @@
               <a class="dropdown-item" onclick="reduceResolution('img5')">Reduce Resolution</a>
               <a class="dropdown-item" onclick="createAvatar('img5', 'col5')">Create Avatar</a>
               <a class="dropdown-item" onclick="toGrayScale('img5')">Convert to Greyscale</a>
+              <a class="dropdown-item" onclick="generateQR('img5', 'canvas5')">Generate QR</a>
               </div>
             </div>
           </div>
@@ -205,6 +214,7 @@
       <div class="col-md-4 mb-4" id="col6">
         <div class="image-container" id="drop-menu-6">
           <img src="img6.jpg" alt="Image 6" id="img6">
+          <div id="canvas6"></div>
           <div class="dropdown-badge">
             <div class="dropdown">
                 <button class="btn dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -229,7 +239,7 @@
               <a class="dropdown-item" onclick="reduceResolution('img6')">Reduce Resolution</a>
               <a class="dropdown-item" onclick="createAvatar('img6', 'col6')">Create Avatar</a>
               <a class="dropdown-item" onclick="toGrayScale('img6')">Convert to Greyscale</a>
-
+              <a class="dropdown-item" onclick="generateQR('img6', 'canvas6')">Generate QR</a>
               </div>
             </div>
           </div>

@@ -249,33 +249,15 @@ function toGrayScale(imageElement) {
 }
 
 
-function generateQR(imageUrl) {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        image = document.getElementById(imageUrl);
-        canvas.width = image.width;
-        canvas.height = image.height;
+function generateQR(imagePath, canvasId) {
+    const qrCode = new QRCodeStyling({
+      width: 210,
+      height: 210,
+      type: "svg",
+      data: imagePath,
+    });
 
-        ctx.drawImage(image, 0, 0);
-    
-        // Convert image data to a string (e.g., Base64 representation)
-        const imageDataString = canvas.toDataURL();
-    
-        // Generate QR code from the image data string
-        const qrCodeCanvas = document.createElement('qrCanvas');
-    
-        qrCodeCanvas.width = 200; // Set QR code canvas size
-        qrCodeCanvas.height = 200;
-    
-        const qr = new QRious({
-            element: qrCodeCanvas,
-            size: 200,
-            value: imageDataString
-        });
-    
-        // Display the generated QR code canvas
-        document.getElementById('row').appendChild(qrCodeCanvas);
-    
+    const canvas = document.getElementById(canvasId);
+    canvas.innerHTML = ""; 
+    qrCode.append(canvas); 
 }
-
-
