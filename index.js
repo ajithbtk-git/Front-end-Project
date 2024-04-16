@@ -261,7 +261,8 @@ function generateQR(imagePath, canvasId) {
     qrCode.append(canvas); 
 }
 
-function createThumbnail(image, col){
+function createThumbnail(img, col){
+    image = document.getElementById(img);
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
