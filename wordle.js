@@ -1,50 +1,86 @@
-// Define the secret word
-const secretWord = "apple";
-let remainingAttempts = 5;
+// List of English words for the game
+const words = ["apple", "banana", "cherry", "orange", "pear", "grape", "melon"];
 
-// Initialize the word display
-let wordDisplay = [];
-for (let i = 0; i < secretWord.length; i++) {
-    wordDisplay.push('_');
+let attemptsLeft = 5; // Number of attempts allowed
+
+// Select a random word from the English word list
+function chooseWord() {
+    return words[Math.floor(Math.random() * words.length)];
 }
-document.getElementById('word-container').textContent = wordDisplay.join(' ');
 
-// Function to check the guessed word
-function checkGuess() {
-    const guessInput = document.getElementById('guess').value.toLowerCase();
+// Initialize the game
+function initGame() {
+    const targetWord = chooseWord();
+    sessionStorage.setItem('targetWord', targetWord);
 
-    if (guessInput.length !== secretWord.length) {
-        alert('Please enter a ' + secretWord.length + '-letter word.');
-        return;
+    console.log(`The target word is: ${targetWord}`);
+
+    const wordDisplay = document.getElementById('word-display');
+    for (let i = 0; i < targetWord.length; i++) {
+        const placeholder = document.createElement('span');
+        placeholder.className = 'placeholder';
+        wordDisplay.appendChild(placeholder);
     }
 
-    remainingAttempts--;
+    document.addEventListener('keydown', handleKeyPress);
+}
 
-    // Check each letter
-    let feedback = '';
-    for (let i = 0; i < secretWord.length; i++) {
-        if (secretWord[i] === guessInput[i]) {
-            wordDisplay[i] = secretWord[i];
-            feedback += '<span style="color: green">' + guessInput[i] + '</span>';
-        } else if (secretWord.includes(guessInput[i])) {
-            feedback += '<span style="color: red">' + guessInput[i] + '</span>';
-        } else {
-            feedback += guessInput[i];
+// Handle key press events
+function handleKeyPress(event) {
+    if (attemptsLeft === 0) {
+        return; // No more attempts allowed
+    }
+
+    const key = event.key.toLowerCase();
+    const targetWord = sessionStorage.getItem('targetWord');
+    const placeholders = document.querySelectorAll('.placeholder');
+
+    let updated = false;
+
+    placeholders.forEach((placeholder, index) => {
+        if (placeholder.textContent === '' && attemptsLeft > 0) {
+            const correctLetter = targetWord[index];
+
+            if (key === correctLetter) {
+                placeholder.textContent = key.toUpperCase();
+                placeholder.classList.add('correct');
+                updated = true;
+            } else if (key === targetWord[index]) {
+                placeholder.textContent = key.toUpperCase();
+                placeholder.classList.add('incorrect');
+                updated = true;
+            }
         }
+    });
+
+    if (!updated && attemptsLeft > 0) {
+        attemptsLeft--;
+        const feedbackText = document.getElementById('feedback');
+        feedbackText.textContent = `Incorrect guess! ${attemptsLeft} attempts left.`;
     }
 
-    // Update the displayed word
-    document.getElementById('word-container').innerHTML = wordDisplay.join(' ');
-
-    // Display feedback
-    document.getElementById('feedback').innerHTML = feedback;
-
-    // Check if the word is guessed correctly
-    if (wordDisplay.join('') === secretWord) {
-        document.getElementById('feedback').innerHTML = '<span style="color: green">Congratulations! You guessed the word!</span>';
-    } else if (remainingAttempts === 0) {
-        document.getElementById('feedback').innerHTML = '<span style="color: red">Game over! The word was "' + secretWord + '".</span>';
-    }
-
-    document.getElementById('guess').value = '';
+    checkGameStatus();
 }
+
+// Check if the game is won or lost
+function checkGameStatus() {
+    const placeholders = document.querySelectorAll('.placeholder');
+    const allFilled = Array.from(placeholders).every(placeholder => placeholder.textContent !== '');
+
+    if (allFilled) {
+        const guessedWord = Array.from(placeholders).map(placeholder => placeholder.textContent).join('').toLowerCase();
+        const targetWord = sessionStorage.getItem('targetWord');
+        const feedbackText = document.getElementById('feedback');
+
+        if (guessedWord === targetWord) {
+            feedbackText.textContent = "Correct! You guessed the word.";
+        } else {
+            feedbackText.textContent = "Incorrect guess. Try again!";
+        }
+
+        document.removeEventListener('keydown', handleKeyPress);
+    }
+}
+
+// Start the game
+document.addEventListener('DOMContentLoaded', initGame);
