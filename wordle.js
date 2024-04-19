@@ -1,16 +1,21 @@
-// List of English words for the game
-const words = ["apple", "banana", "cherry", "orange", "pear", "grape", "melon"];
+// List of words for the game
+const words = {
+    en: ["apple", "banana", "cherry", "orange", "pear", "grape", "melon"],
+    es: ["manzana", "plátano", "cereza", "naranja", "pera", "uva", "melón"]
+};
 
 let attemptsLeft = 5; // Number of attempts allowed
 
-// Select a random word from the English word list
-function chooseWord() {
-    return words[Math.floor(Math.random() * words.length)];
+// Select a random word from the specified language
+function chooseWord(language) {
+    const wordList = words[language];
+    return wordList[Math.floor(Math.random() * wordList.length)];
 }
 
 // Initialize the game
 function initGame() {
-    const targetWord = chooseWord();
+    const language = prompt("Select language: 'en' for English, 'es' for Spanish");
+    const targetWord = chooseWord(language.toLowerCase());
     sessionStorage.setItem('targetWord', targetWord);
 
     console.log(`The target word is: ${targetWord}`);
@@ -28,7 +33,8 @@ function initGame() {
 // Handle key press events
 function handleKeyPress(event) {
     if (attemptsLeft === 0) {
-        return; // No more attempts allowed
+        alert("Game Over!");
+        window.location.href = "wordle_game.html";
     }
 
     const key = event.key.toLowerCase();
@@ -44,10 +50,6 @@ function handleKeyPress(event) {
             if (key === correctLetter) {
                 placeholder.textContent = key.toUpperCase();
                 placeholder.classList.add('correct');
-                updated = true;
-            } else if (key === targetWord[index]) {
-                placeholder.textContent = key.toUpperCase();
-                placeholder.classList.add('incorrect');
                 updated = true;
             }
         }
